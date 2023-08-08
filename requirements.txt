@@ -1,0 +1,8 @@
+pandas
+streamlit
+langchain
+os
+OpenAI
+python-dotenv
+Pillow
+streamlit-extras

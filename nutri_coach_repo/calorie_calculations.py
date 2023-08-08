@@ -28,15 +28,15 @@ def tdee_calc(gender, age, activity_level, weight, height):
     elif gender == 'F':
         BMR = 447.593 + (9.247 * weight) + (3.098 * height)- (4.330 * age)
         
-    if activity_level == "sedentary":
+    if activity_level == "Sedentary":
         tdee = round(BMR * 1.2, 0)
-    elif activity_level == "lightly active":
+    elif activity_level == "Lightly active":
         tdee = round(BMR * 1.375, 0)
-    elif activity_level == "moderately active":
+    elif activity_level == "Moderately active":
         tdee = round(BMR * 1.55, 0)
-    elif activity_level == "very active":
+    elif activity_level == "Very active":
         tdee = round(BMR * 1.725, 0)
-    elif activity_level == "extremely active":
+    elif activity_level == "Extremely active":
         tdee = round(BMR * 1.9, 0)
         
     return tdee
