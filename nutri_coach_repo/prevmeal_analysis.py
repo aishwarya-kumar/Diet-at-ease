@@ -1,24 +1,22 @@
+from langchain.llms import OpenAI
+from langchain.prompts import PromptTemplate
+from langchain.chains import LLMChain, SequentialChain
+from pages.Analyze_a_meal import *
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
 
-from langchain.llms import OpenAI
-from langchain.prompts import PromptTemplate
-from langchain.chains import LLMChain
-# from langchain.schema import BaseOutputParser
-from langchain.chains import LLMChain, SequentialChain
 
 OPENAI_API = os.getenv('OPENAI_API_KEY')
-llm = OpenAI(openai_api_key=OPENAI_API, temperature= 0.9)
-
-from user_input import *
-# from calorie_calculations import *
+llm = OpenAI(openai_api_key=OPENAI_API, temperature=0.9)
 
 # User input
 # meal_type = 'breakfast'
 # meal_title = 'Paneer tikka'
 # quantity_metric = 'servings'
 # quantity_value = 1.5
+
 
 def analyze_prev_meal(meal_title,quantity_value, quantity_metric, age, gender, medical_condition):
 
@@ -28,8 +26,8 @@ def analyze_prev_meal(meal_title,quantity_value, quantity_metric, age, gender, m
     Meal quantity - {quantity_value} {quantity_metric}
     
     If the quantity input is already provided in grams, print the quantity.
-    If the quanity input is not provided in grams, estimate the quanitity of this meal - {meal_title} in grams. Print the meal 
-    quantity.
+    If the quanity input is not provided in grams, estimate the quanitity of this meal - {meal_title} in grams. 
+    Print the meal quantity.
     """
 
     meal_calories_template = """ You need to analyze the calories in this meal by understanding the {meal_title} and it's 
@@ -41,7 +39,7 @@ def analyze_prev_meal(meal_title,quantity_value, quantity_metric, age, gender, m
     Provide the total calories in thsi meal.
     """
 
-    meal_macros_grams_template =""" You need to analyze the breakdown of the macronutrients in this meal 
+    meal_macros_grams_template = """ You need to analyze the breakdown of the macronutrients in this meal 
     by understanding the {meal_title} and it's quantity. 
     
     Meal name -  {meal_title} 
@@ -50,7 +48,7 @@ def analyze_prev_meal(meal_title,quantity_value, quantity_metric, age, gender, m
     Provide a breakdown of the macronutrients carbohydrates, protiens and fats in grams. 
     """
 
-    meal_macros_perc_template =""" You need to analyze the breakdown of the macronutrients in this meal 
+    meal_macros_perc_template = """ You need to analyze the breakdown of the macronutrients in this meal 
     by understanding the {meal_title} and it's quantity. 
     
     Meal name -  {meal_title} 
@@ -59,7 +57,7 @@ def analyze_prev_meal(meal_title,quantity_value, quantity_metric, age, gender, m
     Provide a breakdown of percentage of  carbohydrates, protiens and fats. 
     """
 
-    meal_micronutrients_template= """ You need to provide a description of all the micro nutrients, that is fibre, vitamins, 
+    meal_micronutrients_template = """ You need to provide a description of all the micro nutrients, that is fibre, vitamins, 
     minerals and antioxidants present in the {meal_title}. No need to provide the amount it is present in. 
     Explain the health benefits of these micro nutrients. ONLY mention the micronutrients that are present in the {meal_title}, 
     you do not need to provide any explanation for the micronutrients that are not in {meal_title}.
@@ -149,28 +147,24 @@ def analyze_prev_meal(meal_title,quantity_value, quantity_metric, age, gender, m
     )
 
     overall_chain_prevmeal = SequentialChain(
-        chains=[meal_quantity_chain,meal_calories_chain, meal_macros_grams_chain,meal_macros_perc_chain,
+        chains=[meal_quantity_chain, meal_calories_chain, meal_macros_grams_chain, meal_macros_perc_chain,
                 meal_micronutrients_chain, meal_benefits_chain],
-        input_variables=['meal_title','quantity_value', 'quantity_metric', 'age', 'gender', 'medical_condition'],
-        output_variables=["meal_quantity", "meal_calories","meal_macros_grams", "meal_macros_perc",
+        input_variables=['meal_title', 'quantity_value', 'quantity_metric', 'age', 'gender', 'medical_condition'],
+        output_variables=["meal_quantity", "meal_calories", "meal_macros_grams", "meal_macros_perc",
                           "meal_micros", "meal_benefits"],
         verbose=True
     )
 
+    output_prevmeal = overall_chain_prevmeal({'meal_title': meal_title, 'quantity_value': quantity_value,
+                                              'quantity_metric': quantity_metric, 'age': age, 'gender': gender,
+                                              'medical_condition': medical_condition})
 
-    output_prevmeal = overall_chain_prevmeal({'meal_title': meal_title
-                            ,'quantity_value': quantity_value
-                            , 'quantity_metric': quantity_metric
-                            , 'age': age
-                            , 'gender': gender
-                            , 'medical_condition': medical_condition})
-
-    meal_quantity= output_prevmeal["meal_quantity"]
-    meal_calories= output_prevmeal["meal_calories"]
-    meal_macros_grams= output_prevmeal["meal_macros_grams"]
-    meal_macros_perc= output_prevmeal["meal_macros_perc"]
-    meal_micros= output_prevmeal["meal_micros"]
-    meal_benefits= output_prevmeal["meal_benefits"]
+    meal_quantity = output_prevmeal["meal_quantity"]
+    meal_calories = output_prevmeal["meal_calories"]
+    meal_macros_grams = output_prevmeal["meal_macros_grams"]
+    meal_macros_perc = output_prevmeal["meal_macros_perc"]
+    meal_micros = output_prevmeal["meal_micros"]
+    meal_benefits = output_prevmeal["meal_benefits"]
 
     return meal_quantity, meal_calories, meal_macros_grams, meal_macros_perc, meal_micros, meal_benefits
 
