@@ -42,60 +42,39 @@ st.divider()
 # dietary_pref= input("Enter Dietary preference")
 # dislikes = input("Enter list of food you dislike/allergic to")
 
-# if age and gender and height and weight and medical_condition and dislikes and dietary_pref and activity_level:
-#     bmi_info = bmi_calc(height, weight, gender)
-#     goal = bmi_info[2]
-#     # print(bmi_info)
-#
-#     TDEE = tdee_calc(gender, age, activity_level, weight, height)
-#
-#     cals = calories_to_consume(TDEE, goal, gender)
-#     cal_per_meal = cals[0]
-#     cal_per_snack = cals[1]
-#
-#     # print(cal_per_meal)
-#     # print(cal_per_snack)
-#
-#     macros = calc_macros(goal)
-#     # print(macros)
-#
-#     # Derived inputs
-#     calorie_per_meal= cal_per_meal
-#     calorie_per_snack = cal_per_snack
-#     health_goal = goal
-#     macro_nutrient_distribution = macros
+if age and gender and height and weight and medical_condition and dislikes and dietary_pref and activity_level:
+    bmi_info = bmi_calc(height, weight, gender)
+    goal = bmi_info[2]
+    # print(bmi_info)
 
-# if age and gender and height and weight and medical_condition and dislikes and dietary_pref and activity_level:
+    TDEE = tdee_calc(gender, age, activity_level, weight, height)
 
-generate_info = st.button('Analyze BMI', use_container_width =True)
-if generate_info:
-    if age and gender and height and weight and medical_condition and dislikes and dietary_pref and activity_level:
-        bmi_info = bmi_calc(height, weight, gender)
-        goal = bmi_info[2]
-        # print(bmi_info)
+    cals = calories_to_consume(TDEE, goal, gender)
+    cal_per_meal = cals[0]
+    cal_per_snack = cals[1]
 
-        TDEE = tdee_calc(gender, age, activity_level, weight, height)
+    # print(cal_per_meal)
+    # print(cal_per_snack)
 
-        cals = calories_to_consume(TDEE, goal, gender)
-        cal_per_meal = cals[0]
-        cal_per_snack = cals[1]
+    macros = calc_macros(goal)
+    # print(macros)
 
-        # print(cal_per_meal)
-        # print(cal_per_snack)
+    # Derived inputs
+    calorie_per_meal = cal_per_meal
+    calorie_per_snack = cal_per_snack
+    health_goal = goal
+    macro_nutrient_distribution = macros
 
-        macros = calc_macros(goal)
-        # print(macros)
-
-        # Derived inputs
-        calorie_per_meal = cal_per_meal
-        calorie_per_snack = cal_per_snack
-        health_goal = goal
-        macro_nutrient_distribution = macros
+    generate_info = st.button('Analyze BMI', use_container_width=True)
+    if generate_info:
 
         st.write("Here is your BMI information based on your data:")
-        col1, col2, col3 = st.columns(3)
+        col1, col2 = st.columns(2)
         col1.metric(label="BMI", value=bmi_info[0])
         col2.metric(label="Interpretation", value=bmi_info[1])
+        col3, col4 = st.columns(2)
         col3.metric(label="Health goal", value=bmi_info[2])
+        col4.metric(label="Calories per meal", value=cal_per_meal)
         style_metric_cards()
+
 

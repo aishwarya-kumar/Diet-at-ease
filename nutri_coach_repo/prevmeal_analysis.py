@@ -45,7 +45,7 @@ def analyze_prev_meal(meal_title,quantity_value, quantity_metric, age, gender, m
     Meal name -  {meal_title} 
     Meal quantity - {quantity_value} {quantity_metric}
     
-    Provide a breakdown of the macronutrients carbohydrates, protiens and fats in grams. 
+    Provide a breakdown of the macronutrients carbohydrates, proteins and fats in grams. 
     """
 
     meal_macros_perc_template = """ You need to analyze the breakdown of the macronutrients in this meal 
@@ -54,7 +54,7 @@ def analyze_prev_meal(meal_title,quantity_value, quantity_metric, age, gender, m
     Meal name -  {meal_title} 
     Meal quantity - {quantity_value} {quantity_metric}
     
-    Provide a breakdown of percentage of  carbohydrates, protiens and fats. 
+    Provide a breakdown of percentage of  carbohydrates, proteins and fats. 
     """
 
     meal_micronutrients_template = """ You need to provide a description of all the micro nutrients, that is fibre, vitamins, 

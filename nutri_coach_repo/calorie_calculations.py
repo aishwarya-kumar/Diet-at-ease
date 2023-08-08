@@ -1,25 +1,24 @@
-
 # Functions for all calorie calculations
-
-def bmi_calc(height,weight, gender):
-    bmi = round(float(weight /(height*height))*10000.00, 1)
+def bmi_calc(height, weight, gender):
+    bmi = round(float(weight / (height*height))*10000.00, 1)
     
     if bmi <= 18.4:
         bmi_interpretation = "Underweight"
         goal = "weight_gain"
-    elif bmi >= 18.5 and bmi <= 24.9:
+    elif (bmi >= 18.5) and (bmi <= 24.9):
         bmi_interpretation = "Normal"
         goal = "maintain_weight"
-    elif bmi >= 25.0 and bmi<= 29.9:
+    elif (bmi >= 25.0) and (bmi <= 29.9):
         bmi_interpretation = "Overweight"
         goal = "weight_loss"
-    elif bmi>= 30.0:
+    elif bmi >= 30.0:
         bmi_interpretation = "Obesity"
         goal = "strict_weight_loss"
     else:
         print("Error: bmi out of bounds")
         
     return bmi, bmi_interpretation, goal
+
 
 def tdee_calc(gender, age, activity_level, weight, height):
     
@@ -72,83 +71,96 @@ def calc_macros(goal):
     if goal == "weight_gain":
         carb_min = 0.5
         carb_max = 0.6
-        protien_min = 0.1
-        protien_max = 0.2
+        protein_min = 0.1
+        protein_max = 0.2
         fat_min = 0.2
         fat_max = 0.3
 
     elif goal == "maintain_weight":
         carb_min = 0.4
         carb_max = 0.4
-        protien_min = 0.3
-        protien_max = 0.3
+        protein_min = 0.3
+        protein_max = 0.3
         fat_min = 0.3
         fat_max = 0.3
 
     elif goal == "weight_loss" or "strict_weight_loss":
         carb_min = 0.4
         carb_max = 0.4
-        protien_min = 0.3
-        protien_max = 0.4
+        protein_min = 0.3
+        protein_max = 0.4
         fat_min = 0.2
         fat_max = 0.3
 
-    macros = {'carb_min':carb_min, 'carb_max': carb_max, 'protien_min': protien_min, 
-              'protien_max': protien_max, 'fat_min': fat_min, 'fat_max': fat_max}
+    macros = {'carb_min': carb_min, 'carb_max': carb_max, 'protein_min': protein_min,
+              'protein_max': protein_max, 'fat_min': fat_min, 'fat_max': fat_max}
     return macros
 
-def meal_of_the_day_analysis(motd, cal_per_meal, cals_consumed, macros_consumed, macros):
-    if motd == "breakfast":
-        meal_calories = cal_per_meal 
-        
-    if motd == "lunch":
+
+def meal_of_the_day_analysis(meal_of_the_day, cal_per_meal, cals_consumed, macros_consumed, macros):
+    if meal_of_the_day == "breakfast":
+        meal_calories = cal_per_meal
+
+    if meal_of_the_day == "lunch":
         if cals_consumed['bf_cals'] > cal_per_meal:
             print("Hey! You had a heavy breakfast today. I suggest you to have a healthy lunch")
-            
-        if macros_consumed['bf_carbs'] < macros['carb_min'] :
+
+        if macros_consumed['bf_carbs'] < macros['carb_min']:
             print("You had less carbs for breakfast")
-            prevmeal_carb_prompt = "Make the meal slightly heavy on carbohydrates"
+            carb_min = macros['carb_min'] + 0.1
+            carb_max = macros['carb_max'] + 0.1
         elif macros_consumed['bf_carbs'] > macros['carb_max']:
-            print("You had less carbs for breakfast")
-            prevmeal_carb_prompt = "Make the meal low on carbohydrates"
-            
-        if macros_consumed['bf_protien'] < macros['protien_min']:
-            print("You had less protiens for breakfast")
-            prevmeal_protien_prompt = "Make the meal slightly heavy on Protiens"
-        elif macros_consumed['bf_protien'] > macros['protien_max']:
-            print("You had high protiens for breakfast")
-            prevmeal_protien_prompt = "Make the meal slightly low on protiens"
-            
-        if macros_consumed['bf_fat'] < macros['fat_min']:
+            print("You had more carbs for breakfast")
+            carb_min = macros['carb_min'] - 0.1
+            carb_max = macros['carb_max'] - 0.1
+
+        if macros_consumed['bf_protein'] < macros['protein_min']:
+            print("You had less proteins for breakfast")
+            protein_min = macros['protein_min'] + 0.1
+            protein_max = macros['protein_max'] + 0.1
+        elif macros_consumed['bf_protein'] > macros['protein_max']:
+            print("You had high proteins for breakfast")
+            protein_min = macros['protein_min'] - 0.1
+            protein_max = macros['protein_max'] - 0.1
+
+        if macros_consumed['bf_fats'] < macros['fat_min']:
             print("You had less fats for breakfast")
-            prevmeal_fat_prompt = "Make the meal slightly heavy on fats"
-        elif macros_consumed['bf_fat'] > macros['fat_max']:
+            fat_min = macros['fat_min'] + 0.1
+            fat_max = macros['fat_max'] + 0.1
+        elif macros_consumed['bf_fats'] > macros['fat_max']:
             print("You had high fats for breakfast")
-            prevmeal_fat_prompt = "Make the meal slightly low on fats"
-        
-    if motd == "dinner":
-        if cals_consumed['bf_cals'] + cals_consumed['lunch_cals'] > (2* cal_per_meal):
+            fat_min = macros['fat_min'] - 0.1
+            fat_max = macros['fat_max'] - 0.1
+
+    if meal_of_the_day == "dinner":
+        if cals_consumed['bf_cals'] + cals_consumed['lunch_cals'] > (2 * cal_per_meal):
             print("Hey! You had a heavy breakfast and lunch today. I suggest you to have a healthy and light dinner")
-        
-        if macros_consumed['bf_carbs'] +  macros_consumed['lunch_carbs'] < macros['carb_min']*2:
+
+        if macros_consumed['bf_carbs'] + macros_consumed['lunch_carbs'] < macros['carb_min'] * 2:
             print("You had less carbs for breakfast and lunch")
-            prevmeal_carb_prompt = "Make the meal slightly heavy on carbohydrates"
-        elif macros_consumed['bf_carbs'] +  macros_consumed['lunch_carbs'] > macros['carb_max']*2:
+            carb_min = macros['carb_min'] + 0.1
+            carb_max = macros['carb_max'] + 0.1
+        elif macros_consumed['bf_carbs'] + macros_consumed['lunch_carbs'] > macros['carb_max'] * 2:
             print("You had less carbs for breakfast and lunch")
-            prevmeal_carb_prompt = "Make the meal low on carbohydrates"
-            
-        if macros_consumed['bf_protien'] + macros_consumed['lunch_protien']< macros['protien_min']*2:
-            print("You had less protiens for breakfast and lunch")
-            prevmeal_protien_prompt = "Make the meal slightly heavy on Protiens"
-        elif macros_consumed['bf_protien'] + macros_consumed['lunch_protien']> macros['protien_max']*2:
-            print("You had high protiens for breakfast and lunch")
-            prevmeal_protien_prompt = "Make the meal slightly low on protiens"
-            
-        if macros_consumed['bf_fat']+ macros_consumed['lunch_fat']  < macros['fat_min']*2:
+            carb_min = macros['carb_min'] - 0.1
+            carb_max = macros['carb_max'] - 0.1
+
+        if macros_consumed['bf_protein'] + macros_consumed['lunch_protein'] < macros['protein_min'] * 2:
+            print("You had less proteins for breakfast and lunch")
+            protein_min = macros['protein_min'] + 0.1
+            protein_max = macros['protein_max'] + 0.1
+        elif macros_consumed['bf_protein'] + macros_consumed['lunch_protein'] > macros['protein_max'] * 2:
+            print("You had high proteins for breakfast and lunch")
+            protein_min = macros['protein_min'] - 0.1
+            protein_max = macros['protein_max'] - 0.1
+
+        if macros_consumed['bf_fats'] + macros_consumed['lunch_fats'] < macros['fat_min'] * 2:
             print("You had less fats for breakfast and lunch")
-            prevmeal_fat_prompt = "Make the meal slightly heavy on fats"
-        elif macros_consumed['bf_fat']+ macros_consumed['lunch_fat'] > macros['fat_max']*2:
+            fat_min = macros['fat_min'] + 0.1
+            fat_max = macros['fat_max'] + 0.1
+        elif macros_consumed['bf_fats'] + macros_consumed['lunch_fats'] > macros['fat_max'] * 2:
             print("You had high fats for breakfast and lunch")
-            prevmeal_fat_prompt = "Make the meal slightly low on fats" 
-            
-    return prevmeal_carb_prompt, prevmeal_protien_prompt, prevmeal_fat_prompt
+            fat_min = macros['fat_min'] - 0.1
+            fat_max = macros['fat_max'] - 0.1
+
+    return carb_min, carb_max, protein_min, protein_max, fat_min, fat_max

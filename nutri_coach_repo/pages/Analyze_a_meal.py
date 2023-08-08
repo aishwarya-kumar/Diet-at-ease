@@ -32,9 +32,9 @@ if analyze_meal:
     meal_benefits = meal_analysis[5]
 
     with st.container():
-        mq = st.text_area(label='Quantity', value=meal_quantity, height=800)
-        mcal = st.text_area(label='Calories', value=meal_calories, height=400)
-        mac_gm = st.text_area(label='Macros in grams', value=meal_macros_grams, height=400)
-        mac_perc = st.text_area(label='Macros in Percentage', value=meal_macros_perc, height=400)
+        mq = st.text_area(label='Quantity', value=meal_quantity, height=200)
+        mcal = st.text_area(label='Calories', value=meal_calories, height=200)
+        mac_gm = st.text_area(label='Macros in grams', value=meal_macros_grams, height=200)
+        mac_perc = st.text_area(label='Macros in Percentage', value=meal_macros_perc, height=200)
         mic = st.text_area(label='Micro nutrients description', value=meal_micros, height=400)
         m_ben = st.text_area(label='Benefits', value=meal_benefits, height=400)

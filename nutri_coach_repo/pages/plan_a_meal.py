@@ -1,14 +1,13 @@
-import streamlit as st
-import os
-import sys
-from PIL import Image
+# import streamlit as st
+# import os
+# import sys
+# from PIL import Image
+# from nutri_coach_repo import calorie_calculations
+from nutri_coach_repo.pages.User_Information import *
+# from nutri_coach_repo.meal_recipie_prompt_engg import *
 
 rootpath = os.path.join(os.getcwd(), '..')
 sys.path.append(rootpath)
-
-from nutri_coach_repo.pages.User_Information import *
-from nutri_coach_repo.meal_recipie_prompt_engg import *
-
 
 # User input from prev stage
 # age = age
@@ -29,13 +28,13 @@ with st.container():
     cuisine = st.text_input("Cuisine")
     ingredients = st.text_input("Enter the Ingredients in your pantry")
 
+calorie_per_meal = cals[0]
+calorie_per_snack = cals[1]
+health_goal = goal
+macro_nutrient_distribution = macros
+
 generate_meal = st.button('Generate meal plan', use_container_width=True)
 if generate_meal:
-    # inputs
-    calorie_per_meal = cal_per_meal
-    calorie_per_snack = cal_per_snack
-    health_goal = goal
-    macro_nutrient_distribution = macros
 
     meal_plan = generate_meal_plan(age, gender, medical_condition, dietary_pref, dislikes, calorie_per_meal,
                                    health_goal, cuisine, macro_nutrient_distribution, ingredients, meal_of_the_day)
