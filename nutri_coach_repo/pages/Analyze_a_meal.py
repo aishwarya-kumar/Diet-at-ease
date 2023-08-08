@@ -2,7 +2,7 @@ import streamlit as st
 import os
 import sys
 from PIL import Image
-from nutri_coach_repo.pages.User_Information import *
+
 from nutri_coach_repo.prevmeal_analysis import *
 
 # rootpath = os.path.join(os.getcwd(), '..')

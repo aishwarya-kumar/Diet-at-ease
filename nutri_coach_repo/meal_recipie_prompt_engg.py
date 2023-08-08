@@ -4,8 +4,8 @@ from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SequentialChain
 from calorie_calculations import *
-from pages.User_Information import *
-# from pages.Plan_a_meal import *
+import streamlit as st
+
 
 load_dotenv()
 
@@ -28,6 +28,7 @@ macros_consumed = {'bf_carbs': 0.25,
                   'dinner_carbs': "",
                   'dinner_protein':"",
                   'dinner_fats':""}
+
 
 meal_of_the_day = "dinner"
 calorie_per_meal = st.session_state['cal_per_meal']

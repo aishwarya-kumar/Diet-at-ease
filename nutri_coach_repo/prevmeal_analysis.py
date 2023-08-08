@@ -1,7 +1,7 @@
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SequentialChain
-from pages.Analyze_a_meal import *
+# from pages.Analyze_a_meal import *
 
 import os
 from dotenv import load_dotenv

@@ -20,18 +20,35 @@ with st.container():
     st.write("Basic Information")
     col1, col2 = st.columns(2)
 
-    age = col1.number_input('Age', key="age")
-    gender = col1.selectbox('Gender', ('F', 'M'), key="gender")
-    weight = col1.number_input("Weight in KGs", key="weight")
-    height = col1.number_input("Height in cms", key="height")
+    age = col1.number_input('Age')
+    gender = col1.selectbox('Gender', ('F', 'M'))
+    weight = col1.number_input("Weight in KGs")
+    height = col1.number_input("Height in cms")
     medical_condition = col2.selectbox('Select metabolic disease',
-                                       ('Diabetes', 'Obesity', 'Hypertension', 'High cholesterol'),
-                                       key="medical_condition")
+                                       ('Diabetes', 'Obesity', 'Hypertension', 'High cholesterol'))
     activity_level = col2.selectbox('Activity level', ("Sedentary", "Lightly active", "Moderately active",
-                                                       "Very active", "Extremely active"), key="activity_level")
+                                                       "Very active", "Extremely active"))
     dietary_pref = col2.selectbox('Dietary preference', ("Vegetarian", "Vegan", "Eggetarian", "Gluten free",
-                                                         "Lactose intolerant", "Non-Vegetarian"), key="dietary_pref")
-    dislikes = col2.text_input("Food allergies/ dislikes", key="dislikes")
+                                                         "Lactose intolerant", "Non-Vegetarian"))
+    dislikes = col2.text_input("Food allergies/ dislikes")
+
+
+if 'age' not in st.session_state:
+    st.session_state['age'] = age
+if 'gender' not in st.session_state:
+    st.session_state['gender'] = gender
+if 'weight' not in st.session_state:
+    st.session_state['weight'] = weight
+if 'height' not in st.session_state:
+    st.session_state['height'] = height
+if 'medical_condition' not in st.session_state:
+    st.session_state['medical_condition'] = medical_condition
+if 'activity_level' not in st.session_state:
+    st.session_state['activity_level'] = activity_level
+if 'dietary_pref' not in st.session_state:
+    st.session_state['dietary_pref'] = dietary_pref
+if 'dislikes' not in st.session_state:
+    st.session_state['dislikes'] = dislikes
 
 st.divider()
 

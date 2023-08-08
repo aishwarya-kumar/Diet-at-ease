@@ -1,21 +1,12 @@
-# import streamlit as st
-# import os
-# import sys
-# from PIL import Image
-# from nutri_coach_repo import calorie_calculations
-from nutri_coach_repo.pages.User_Information import *
+import streamlit as st
+import os
+import sys
+from PIL import Image
+
 from nutri_coach_repo.meal_recipie_prompt_engg import *
 
 rootpath = os.path.join(os.getcwd(), '..')
 sys.path.append(rootpath)
-
-age = st.session_state['age']
-gender = st.session_state['gender']
-weight = st.session_state['weight']
-height = st.session_state['height']
-medical_condition = st.session_state['medical_condition']
-dietary_pref = st.session_state['dietary_pref']
-dislikes = st.session_state['dislikes']
 
 food = Image.open("food.jpg")
 st.image(food, width=700)
@@ -34,6 +25,14 @@ macro_nutrient_distribution = st.session_state['macros']
 
 generate_meal = st.button('Generate meal plan', use_container_width=True)
 if generate_meal:
+
+    age = st.session_state['age']
+    gender = st.session_state['gender']
+    weight = st.session_state['weight']
+    height = st.session_state['height']
+    medical_condition = st.session_state['medical_condition']
+    dietary_pref = st.session_state['dietary_pref']
+    dislikes = st.session_state['dislikes']
 
     meal_plan = generate_meal_plan(age, gender, medical_condition, dietary_pref, dislikes, calorie_per_meal,
                                    health_goal, cuisine, macro_nutrient_distribution, ingredients, meal_of_the_day)
