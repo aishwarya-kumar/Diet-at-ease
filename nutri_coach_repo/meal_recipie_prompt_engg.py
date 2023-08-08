@@ -5,7 +5,7 @@ from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SequentialChain
 from calorie_calculations import *
 from pages.User_Information import *
-from pages.Plan_a_meal import *
+# from pages.Plan_a_meal import *
 
 load_dotenv()
 
@@ -29,7 +29,12 @@ macros_consumed = {'bf_carbs': 0.25,
                   'dinner_protein':"",
                   'dinner_fats':""}
 
-ajd_macros = meal_of_the_day_analysis(meal_of_the_day, cal_per_meal, cals_consumed, macros_consumed, macros)
+meal_of_the_day = "dinner"
+calorie_per_meal = st.session_state['cal_per_meal']
+macro_nutrient_distribution = st.session_state['macros']
+# st.session_state["meal_of_the_day"]
+
+ajd_macros = meal_of_the_day_analysis(meal_of_the_day, calorie_per_meal, cals_consumed, macros_consumed, macro_nutrient_distribution)
 adj_macro_nutrient_distribution = ajd_macros
 # Prompt engineering
 def generate_meal_plan(age, gender, medical_condition, dietary_pref, dislikes, calorie_per_meal, health_goal, cuisine,
@@ -66,14 +71,14 @@ def generate_meal_plan(age, gender, medical_condition, dietary_pref, dislikes, c
     """
     adj_macros_meal_recipie_template = """ You are a nutrition coach for users suffering from metabolic disorders like diabetes, 
     hypertension, high lipids or obesity. The users are generally below the age of 40. Your job is to understand the user 
-    details and generate a meal plan for them based on the ingridients available in their pantry,  their dietary prefernce, 
+    details and generate a meal plan for them based on the ingredients available in their pantry,  their dietary prefernce, 
     cuisine of choice, calorie requirements to align with their overall health goal. 
     User details are given as follows:
     'age': {age}, 'gender' = {gender}, 'medical_condition' : {medical_condition}, 
     'dietary_pref':{dietary_pref}, 'dislikes': {dislikes}, 
     'calorie_per_meal' : {calorie_per_meal}, 'health_goal' :{health_goal},
     'cuisine': {cuisine}, 'adj_macro_nutrient_distribution': {adj_macro_nutrient_distribution}
-    'ingridients': {ingridients}, meal_of_the_day = {meal_of_the_day}
+    'ingredients': {ingredients}, meal_of_the_day = {meal_of_the_day}
 
     You do not give any medical advice, only generate recipies.
     You need to follow the dietary preference and cuisine VERY STRICTLY. 
@@ -115,14 +120,14 @@ def generate_meal_plan(age, gender, medical_condition, dietary_pref, dislikes, c
         template=meal_recipie_template,
         input_variables=['age', 'gender', 'medical_condition', 'dietary_pref', 'dislikes', 'calorie_per_meal',
                          'health_goal',
-                         'cuisine', 'macro_nutrient_distribution', 'ingridients', 'meal_of_the_day']
+                         'cuisine', 'macro_nutrient_distribution', 'ingredients', 'meal_of_the_day']
     )
 
     adj_macros_meal_recipie_template_prompt = PromptTemplate(
         template=adj_macros_meal_recipie_template,
         input_variables=['age', 'gender', 'medical_condition', 'dietary_pref', 'dislikes', 'calorie_per_meal',
                          'health_goal',
-                         'cuisine', 'adj_macro_nutrient_distribution', 'ingridients', 'meal_of_the_day']
+                         'cuisine', 'adj_macro_nutrient_distribution', 'ingredients', 'meal_of_the_day']
     )
 
     meal_description_template_prompt = PromptTemplate(
@@ -180,7 +185,7 @@ def generate_meal_plan(age, gender, medical_condition, dietary_pref, dislikes, c
         chains=[meal_chain, meal_desc_chain, meal_micronutrients_chain, meal_benefits_chain],
         input_variables=['age', 'gender', 'medical_condition', 'dietary_pref', 'dislikes', 'calorie_per_meal',
                          'health_goal',
-                         'cuisine', 'macro_nutrient_distribution', 'ingridients', 'meal_of_the_day'],
+                         'cuisine', 'macro_nutrient_distribution', 'ingredients', 'meal_of_the_day'],
         output_variables=["meal", "meal_desc", "meal_micros", "meal_benefits"],
         verbose=True
     )
@@ -189,7 +194,7 @@ def generate_meal_plan(age, gender, medical_condition, dietary_pref, dislikes, c
         chains=[adj_macros_meal_chain, meal_desc_chain, meal_micronutrients_chain, meal_benefits_chain],
         input_variables=['age', 'gender', 'medical_condition', 'dietary_pref', 'dislikes', 'calorie_per_meal',
                          'health_goal',
-                         'cuisine', 'adj_macro_nutrient_distribution', 'ingridients', 'meal_of_the_day'],
+                         'cuisine', 'adj_macro_nutrient_distribution', 'ingredients', 'meal_of_the_day'],
         output_variables=["meal", "meal_desc", "meal_micros", "meal_benefits"],
         verbose=True
     )
@@ -208,6 +213,11 @@ def generate_meal_plan(age, gender, medical_condition, dietary_pref, dislikes, c
                                            'health_goal': health_goal, 'cuisine': cuisine,
                                            'adj_macro_nutrient_distribution': adj_macro_nutrient_distribution,
                                            'ingredients': ingredients, 'meal_of_the_day': meal_of_the_day})
+    # meal = output[1]
+    # meal_desc = output[1]
+    # meal_micros = output[2]
+    # meal_benefits = output[3]
+
     meal = output["meal"]
     meal_desc = output["meal_desc"]
     meal_micros = output["meal_micros"]

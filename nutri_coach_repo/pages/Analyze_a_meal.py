@@ -13,8 +13,12 @@ st.image(analyze_img, width= 700)
 
 st.title('Analyze Meals')
 
+age = st.session_state['age']
+gender = st.session_state['gender']
+medical_condition = st.session_state['medical_condition']
+
 with st.container():
-    meal_type = st.selectbox("Which meal do you want to analyze?", ('breakfast', 'lunch', 'dinner'))
+    meal_type = st.selectbox("Which meal do you want to analyze?", ('bf', 'lunch', 'dinner'))
     meal_title = st.text_input("What did you have?")
     quantity_metric = st.selectbox("Quantity metric", ('grams', 'servings'))
     quantity_value = st.number_input("Quantity value")

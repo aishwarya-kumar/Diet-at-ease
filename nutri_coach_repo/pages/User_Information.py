@@ -3,10 +3,9 @@ import os
 import sys
 from PIL import Image
 from streamlit_extras.metric_cards import style_metric_cards
-from nutri_coach_repo.calorie_calculations import *
-
 rootpath = os.path.join(os.getcwd(), '..')
 sys.path.append(rootpath)
+from nutri_coach_repo.calorie_calculations import *
 
 # Title
 st.title('User Information')
@@ -20,27 +19,21 @@ with st.container():
 
     st.write("Basic Information")
     col1, col2 = st.columns(2)
-    age = col1.number_input('Age')
-    gender = col1.selectbox('Gender', ('F', 'M'))
-    weight = col1.number_input("Weight in KGs")
-    height = col1.number_input("Height in cms")
 
-    medical_condition = col2.selectbox('Select metabolic disease', ('Diabetes', 'Obesity', 'Hypertension', 'High cholesterol'))
-    activity_level = col2.selectbox('Activity level', ("Sedentary", "Lightly active", "Moderately active", "Very active", "Extremely active"))
-    dietary_pref = col2.selectbox('Dietary preference', ("Vegetarian", "Vegan","Eggetarian", "Gluten free", "Lactose intolerant", "Non-Vegetarian"))
-    dislikes = col2.text_input("Food allergies/ dislikes")
+    age = col1.number_input('Age', key="age")
+    gender = col1.selectbox('Gender', ('F', 'M'), key="gender")
+    weight = col1.number_input("Weight in KGs", key="weight")
+    height = col1.number_input("Height in cms", key="height")
+    medical_condition = col2.selectbox('Select metabolic disease',
+                                       ('Diabetes', 'Obesity', 'Hypertension', 'High cholesterol'),
+                                       key="medical_condition")
+    activity_level = col2.selectbox('Activity level', ("Sedentary", "Lightly active", "Moderately active",
+                                                       "Very active", "Extremely active"), key="activity_level")
+    dietary_pref = col2.selectbox('Dietary preference', ("Vegetarian", "Vegan", "Eggetarian", "Gluten free",
+                                                         "Lactose intolerant", "Non-Vegetarian"), key="dietary_pref")
+    dislikes = col2.text_input("Food allergies/ dislikes", key="dislikes")
 
 st.divider()
-
-# Calculations based on user input
-# age = int(input("What is your age?"))
-# gender = input("Enter gender")
-# weight = int(input("Enter weight in kgs"))
-# height = int(input("Enter height in cms"))
-# medical_condition= input("Enter medical condition")
-# activity_level = input("Enter activity level")
-# dietary_pref= input("Enter Dietary preference")
-# dislikes = input("Enter list of food you dislike/allergic to")
 
 if age and gender and height and weight and medical_condition and dislikes and dietary_pref and activity_level:
     bmi_info = bmi_calc(height, weight, gender)
@@ -51,17 +44,22 @@ if age and gender and height and weight and medical_condition and dislikes and d
 
     cals = calories_to_consume(TDEE, goal, gender)
     cal_per_meal = cals[0]
-    cal_per_snack = cals[1]
-
-    # print(cal_per_meal)
-    # print(cal_per_snack)
+    # cal_per_snack = cals[1]
 
     macros = calc_macros(goal)
-    # print(macros)
+
+    if 'cal_per_meal' not in st.session_state:
+        st.session_state['cal_per_meal'] = cals[0]
+
+    if 'goal' not in st.session_state:
+        st.session_state['goal'] = goal
+
+    if 'macros' not in st.session_state:
+        st.session_state['macros'] = macros
 
     # Derived inputs
     calorie_per_meal = cal_per_meal
-    calorie_per_snack = cal_per_snack
+    # calorie_per_snack = cal_per_snack
     health_goal = goal
     macro_nutrient_distribution = macros
 
@@ -76,5 +74,3 @@ if age and gender and height and weight and medical_condition and dislikes and d
         col3.metric(label="Health goal", value=bmi_info[2])
         col4.metric(label="Calories per meal", value=cal_per_meal)
         style_metric_cards()
-
-
