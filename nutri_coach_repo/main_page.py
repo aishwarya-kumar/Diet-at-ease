@@ -6,7 +6,7 @@ from streamlit_extras.switch_page_button import switch_page
 from streamlit_extras.add_vertical_space import add_vertical_space
 
 logo = Image.open('Vita Pulse logo.png')
-st.image(logo)
+st.image(logo, width= 700)
 
 st.title('Vita Pulse')
 st.divider()
