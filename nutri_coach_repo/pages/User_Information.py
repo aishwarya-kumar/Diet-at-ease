@@ -32,27 +32,27 @@ with st.container():
                                                          "Lactose intolerant", "Non-Vegetarian"))
     dislikes = col2.text_input("Food allergies/ dislikes")
 
-
-if 'age' not in st.session_state:
-    st.session_state['age'] = age
-if 'gender' not in st.session_state:
-    st.session_state['gender'] = gender
-if 'weight' not in st.session_state:
-    st.session_state['weight'] = weight
-if 'height' not in st.session_state:
-    st.session_state['height'] = height
-if 'medical_condition' not in st.session_state:
-    st.session_state['medical_condition'] = medical_condition
-if 'activity_level' not in st.session_state:
-    st.session_state['activity_level'] = activity_level
-if 'dietary_pref' not in st.session_state:
-    st.session_state['dietary_pref'] = dietary_pref
-if 'dislikes' not in st.session_state:
-    st.session_state['dislikes'] = dislikes
-
 st.divider()
 
 if age and gender and height and weight and medical_condition and dislikes and dietary_pref and activity_level:
+
+    if 'age' not in st.session_state:
+        st.session_state['age'] = age
+    if 'gender' not in st.session_state:
+        st.session_state['gender'] = gender
+    if 'weight' not in st.session_state:
+        st.session_state['weight'] = weight
+    if 'height' not in st.session_state:
+        st.session_state['height'] = height
+    if 'medical_condition' not in st.session_state:
+        st.session_state['medical_condition'] = medical_condition
+    if 'activity_level' not in st.session_state:
+        st.session_state['activity_level'] = activity_level
+    if 'dietary_pref' not in st.session_state:
+        st.session_state['dietary_pref'] = dietary_pref
+    if 'dislikes' not in st.session_state:
+        st.session_state['dislikes'] = dislikes
+    
     bmi_info = bmi_calc(height, weight, gender)
     goal = bmi_info[2]
     # print(bmi_info)
