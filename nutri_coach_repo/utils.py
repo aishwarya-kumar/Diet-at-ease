@@ -2,10 +2,10 @@ from sentence_transformers import SentenceTransformer
 import pinecone
 import openai
 import streamlit as st
-openai.api_key = "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"
+openai.api_key = ""
 model = SentenceTransformer('all-MiniLM-L6-v2')
 
-pinecone.init(api_key='02b2b813-8d68-4456-b421-cda952bd97a7', environment='asia-southeast1-gcp-free')
+pinecone.init(api_key='', environment='')
 index = pinecone.Index('llm-chatbot-metabolicdisorders')
 
 def find_match(input):
