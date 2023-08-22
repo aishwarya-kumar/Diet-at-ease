@@ -1,13 +1,10 @@
 import os
-from dotenv import load_dotenv
 from langchain.llms import OpenAI
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain, SequentialChain
 from calorie_calculations import *
 import streamlit as st
-
-
-load_dotenv()
+from secret_key import OPENAI_API_KEY
 
 OPENAI_API = os.getenv('OPENAI_API_KEY')
 llm = OpenAI(openai_api_key=OPENAI_API, temperature=0.9)

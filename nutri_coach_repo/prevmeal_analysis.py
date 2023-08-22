@@ -4,10 +4,10 @@ from langchain.chains import LLMChain, SequentialChain
 # from pages.Analyze_a_meal import *
 
 import os
-from dotenv import load_dotenv
-load_dotenv()
+# from dotenv import load_dotenv
+# load_dotenv()
 
-
+from secret_key import *
 OPENAI_API = os.getenv('OPENAI_API_KEY')
 llm = OpenAI(openai_api_key=OPENAI_API, temperature=0.9)
 

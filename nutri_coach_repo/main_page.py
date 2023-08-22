@@ -5,10 +5,10 @@ from PIL import Image
 from streamlit_extras.switch_page_button import switch_page
 from streamlit_extras.add_vertical_space import add_vertical_space
 
-logo = Image.open('Vita Pulse logo.png')
-st.image(logo, width= 700)
+logo = Image.open('DE logo.png')
+st.image(logo, width=700)
 
-st.title('Vita Pulse')
+st.title('Diet @ Ease')
 st.divider()
 st.subheader("Hey User! How are you doing today?")
 st.divider()
@@ -21,6 +21,10 @@ with st.container():
    analyze_meal = st.button('Analyze a meal', use_container_width=True)
    add_vertical_space(add_n_lines)
    user_info = st.button('Edit user info', use_container_width=True)
+   add_vertical_space(add_n_lines)
+   nutri_edu = st.button('Nutritional Education', use_container_width=True)
+   add_vertical_space(add_n_lines)
+   meat_edu = st.button('Metabolic Education', use_container_width=True)
 
    if plan_meal:
       switch_page("Plan_a_meal")
@@ -30,6 +34,13 @@ with st.container():
 
    if user_info:
       switch_page("User_Information")
+
+   if nutri_edu:
+      switch_page("Nutritional_Education")
+
+   if meat_edu:
+      switch_page("Metabolic_Education")
+
 
 
 
