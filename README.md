@@ -22,12 +22,15 @@ The repo consists of 5 main sections:
 ![user-info](https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/9222fe95-cf48-4f4a-9bd2-17775fa3191f)
 
 **Plan a meal:** Takes input - meal of the day, cuisine of choice and ingridients in your pantry. Based on the inputs provided the LLM will provide a recipe considering your metabolic condition and food preferences. This will take into account the number of calories that needs to be consumed, based on your health goal.
+![plan a meal - figma](https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/803ef3ae-115e-4c85-85db-626594e7501e)
 
-https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/3c6f054a-fad2-4779-8935-eff2605ab3ec
-
-**Analyze a meal:** Takes input - Meal of the day. Description of the meal consumed and the quantity of meal consumed. The LLM analyses the meal and provide useful insights. 
+**Analyze ![Uploading plan a meal - figma.png…]()
+a meal:** Takes input - Meal of the day. Description of the meal consumed and the quantity of meal consumed. The LLM analyses the meal and provide useful insights. 
+![analyze a meal - figma](https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/7d6ef960-fe90-45d0-8e2a-fcdb6c465569)
 
 **Learn more:** This section helps you learn more about metabolism, nutrition and metabolic disorders. You can take interactive quizzes and understand the nuances of metabolism. 
+<img width="1440" alt="nutri_edu_img" src="https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/967b165d-8e40-4b0c-98ee-53d6be689c3d">
+<img width="733" alt="metabolic_edu" src="https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/8bae58b9-ec54-4b40-ae86-ce6f965b4dc2">
 
 **AI chatbot- Kara:** You can ask any questions you have regarding nutrition or metabolic disorders in general.
 
