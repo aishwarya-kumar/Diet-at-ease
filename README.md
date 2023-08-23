@@ -7,6 +7,24 @@ These are called metabolic disorders.
 Diet@Ease is a one stop platform for all the nutrition needs for people suffering from metabolic disorders.
 It aims to provide the best nutrition support with its personalized meal planning tool, helps you understand how your body is being fueled with the meal analysis tool and helps educate yourself about nutrition, metabolism and disorders in detail, with the education tool.
 Our personalized meal planning solution takes into account your metabolic condition, food preferences, and even what's in your pantry. Say goodbye to the hassle of calculating calories and doing the math.
-For the times you skip pre-planning your meal, you can use the “Analyse a meal” tool to provide you calorie estimations, macronutrient breakdown, micronutrient analysis, and list the health benefits of the meal you already consumed. 
-We don’t just stop here. The “Learn about” education tool arms you with the right know how regarding nutrition, metabolism, metabolic disorders and more.
+For the times you skip pre-planning your meal, you can use the “Analyse a meal” tool to provide you calorie estimations, macronutrient breakdown, micronutrient analysis, and list the health benefits of the meal you already consumed. We don’t just stop here. The “Learn about” education tool arms you with the right know how regarding nutrition, metabolism, metabolic disorders and more.
+
+**The application:**
+
+The repo consists of 5 main sections:
+* User information
+* Plan a Meal
+* Analyze a meal
+* Learn more
+* Kara - AI chatbot
+
+**User information:** Takes information like, height, weight, activity level, ,metabolic condition etc. This information is used to calculate the BMI(Body Mass Index), BMI interpretation and TDEE (Total Daily Energy Expenditure). This will help set a health goal(Weight gain, maintain weight, wirght loss) and identify the number of calories to be consumed in a day.
+
+**Plan a meal:** Takes input - meal of the day, cuisine of choice and ingridients in your pantry. Based on the inputs provided the LLM will provide a recipe considering your metabolic condition and food preferences. This will take into account the number of calories that needs to be consumed, based on your health goal.
+
+**Analyze a meal:** Takes input - Meal of the day. Description of the meal consumed and the quantity of meal consumed. The LLM analyses the meal and provide useful insights. 
+
+**Learn more:** This section helps you learn more about metabolism, nutrition and metabolic disorders. You can take interactive quizzes and understand the nuances of metabolism. 
+
+**AI chatbot- Kara:** You can ask any questions you have regarding nutrition or metabolic disorders in general.
 
