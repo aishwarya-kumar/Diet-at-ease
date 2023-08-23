@@ -5,7 +5,6 @@
 Diet@Ease is a specialized platform created to address the nutritional and health needs of individuals living with metabolic disorders. It offers a range of essential features including personalized meal planning and tracking, in-depth meal analysis and nutrition insights, educational resources, engaging quizzes to enhance disease management awareness and expert support through a nutrition chatbot.
 
 **The application:**
-
 The repo consists of 5 main sections:
 * User information
 * Plan a Meal
