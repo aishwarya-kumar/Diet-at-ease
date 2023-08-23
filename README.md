@@ -26,9 +26,12 @@ The repo consists of 5 main sections:
 https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/ea139f4c-a451-45f6-abd3-654f03d479dc
 
 
-**Analyze ![Uploading plan a meal - figma.png…]()
-a meal:** Takes input - Meal of the day. Description of the meal consumed and the quantity of meal consumed. The LLM analyses the meal and provide useful insights. 
-![analyze a meal - figma](https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/7d6ef960-fe90-45d0-8e2a-fcdb6c465569)
+
+**Analyze a meal:** Takes input - Meal of the day. Description of the meal consumed and the quantity of meal consumed. The LLM analyses the meal and provide useful insights. 
+
+https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/ac37a079-9220-4849-ae62-e032d2122153
+
+
 
 **Learn more:** This section helps you learn more about metabolism, nutrition and metabolic disorders. You can take interactive quizzes and understand the nuances of metabolism. 
 <img width="1440" alt="nutri_edu_img" src="https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/967b165d-8e40-4b0c-98ee-53d6be689c3d">
