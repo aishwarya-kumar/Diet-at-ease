@@ -23,6 +23,7 @@ The repo consists of 5 main sections:
 
 **Plan a meal:** Takes input - meal of the day, cuisine of choice and ingridients in your pantry. Based on the inputs provided the LLM will provide a recipe considering your metabolic condition and food preferences. This will take into account the number of calories that needs to be consumed, based on your health goal.
 
+https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/3c6f054a-fad2-4779-8935-eff2605ab3ec
 
 **Analyze a meal:** Takes input - Meal of the day. Description of the meal consumed and the quantity of meal consumed. The LLM analyses the meal and provide useful insights. 
 
