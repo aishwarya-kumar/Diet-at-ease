@@ -38,3 +38,9 @@ https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/120fc24b-5c1b
 
 **AI chatbot- Kara:** You can ask any questions you have regarding nutrition or metabolic disorders in general.
 
+
+https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/15f0dc3b-3ffb-402d-a2b0-e88d287ade8f
+
+
+
+
