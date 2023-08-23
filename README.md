@@ -1,8 +1,8 @@
 # DIET AT EASE
 
  **Problem overview:**
-Diet@Ease is a one stop platform for all the nutrition needs for people suffering from metabolic disorders.
-It aims to provide the best nutrition support with its personalized meal planning tool, helps you understand how your body is being fueled with the meal analysis tool and helps educate yourself about nutrition, metabolism and disorders in detail, with the education tool.
+
+Diet@Ease is a specialized platform created to address the nutritional and health needs of individuals living with metabolic disorders. It offers a range of essential features including personalized meal planning and tracking, in-depth meal analysis and nutrition insights, educational resources, engaging quizzes to enhance disease management awareness and expert support through a nutrition chatbot.
 
 **The application:**
 
