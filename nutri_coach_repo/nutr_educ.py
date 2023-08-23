@@ -41,7 +41,7 @@ Give me a list of {num_foods} foods and/or ingredients that would positively aff
         partial_variables={"format_instructions": format_instructions}
     )
 
-    model = OpenAI(temperature=0, openai_api_key="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")
+    model = OpenAI(temperature=0, openai_api_key=OPENAI_API)
 
     _input = prompt.format(metabolic_disorder=metabolic_disorder_val, num_foods=num_foods_val)
     output = model(_input)
@@ -66,7 +66,7 @@ Give me a list of {num_foods} foods and/or ingredients that would negatively aff
         partial_variables={"format_instructions": format_instructions}
     )
 
-    model = OpenAI(temperature=0, openai_api_key="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")
+    model = OpenAI(temperature=0, openai_api_key=OPENAI_API)
 
     _input = prompt.format(metabolic_disorder=metabolic_disorder_val, num_foods=num_foods_val)
     output = model(_input)
