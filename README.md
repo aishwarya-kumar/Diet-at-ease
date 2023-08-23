@@ -1,6 +1,6 @@
 # DIET AT EASE
 
- **Problem overview: **
+ **Problem overview:**
 
 There are 3.7 billion people in the world who suffer from one category of disease alone. Affecting 1 in 3 American adults and amassing a staggering $327 billion in diagnosis costs, and these figures continue to rise. 
 These are called metabolic disorders. 
