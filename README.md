@@ -19,7 +19,9 @@ The repo consists of 5 main sections:
 * Kara - AI chatbot
 
 **User information:** Takes information like, height, weight, activity level, ,metabolic condition etc. This information is used to calculate the BMI(Body Mass Index), BMI interpretation and TDEE (Total Daily Energy Expenditure). This will help set a health goal(Weight gain, maintain weight, wirght loss) and identify the number of calories to be consumed in a day.
-![user-info](https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/9222fe95-cf48-4f4a-9bd2-17775fa3191f)
+
+https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/b0281ffc-b9e8-4707-b150-b56869677ffe
+
 
 **Plan a meal:** Takes input - meal of the day, cuisine of choice and ingridients in your pantry. Based on the inputs provided the LLM will provide a recipe considering your metabolic condition and food preferences. This will take into account the number of calories that needs to be consumed, based on your health goal.
 
@@ -34,8 +36,10 @@ https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/ac37a079-9220
 
 
 **Learn more:** This section helps you learn more about metabolism, nutrition and metabolic disorders. You can take interactive quizzes and understand the nuances of metabolism. 
-<img width="1440" alt="nutri_edu_img" src="https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/967b165d-8e40-4b0c-98ee-53d6be689c3d">
-<img width="733" alt="metabolic_edu" src="https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/8bae58b9-ec54-4b40-ae86-ce6f965b4dc2">
+
+
+https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/120fc24b-5c1b-41cf-90d6-5369ba44e786
+
 
 **AI chatbot- Kara:** You can ask any questions you have regarding nutrition or metabolic disorders in general.
 
