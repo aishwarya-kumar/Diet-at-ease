@@ -9,7 +9,7 @@ from nutri_coach_repo.metab_educ import *
 # rootpath = os.path.join(os.getcwd(), '..')
 # sys.path.append(rootpath)
 
-analyze_img = Image.open("analysisimage.jpg")
+analyze_img = Image.open("banner_images/analysisimage.jpg")
 st.image(analyze_img, width= 700)
 
 st.title('Metabolic Education')

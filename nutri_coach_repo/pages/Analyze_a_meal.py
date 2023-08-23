@@ -8,7 +8,7 @@ from nutri_coach_repo.prevmeal_analysis import *
 # rootpath = os.path.join(os.getcwd(), '..')
 # sys.path.append(rootpath)
 
-analyze_img = Image.open("analyze.jpg")
+analyze_img = Image.open("banner_images/analyze.jpg")
 st.image(analyze_img, width= 700)
 
 st.title('Analyze Meals')

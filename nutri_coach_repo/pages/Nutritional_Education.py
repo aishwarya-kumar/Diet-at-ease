@@ -5,7 +5,7 @@ from PIL import Image
 
 from nutri_coach_repo.nutr_educ import *
 
-analyze_img = Image.open("analysisimage.jpg")
+analyze_img = Image.open("banner_images/analysisimage.jpg")
 st.image(analyze_img, width= 700)
 
 st.title('Nutritional Education')

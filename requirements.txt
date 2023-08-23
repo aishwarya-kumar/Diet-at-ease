@@ -8,3 +8,4 @@ Pillow
 streamlit-extras
 streamlit_chat
 sentence_transformers
+pinecone-client

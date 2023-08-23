@@ -3,12 +3,11 @@ import os
 import sys
 from PIL import Image
 
-from nutri_coach_repo.meal_recipie_prompt_engg import *
-
 rootpath = os.path.join(os.getcwd(), '..')
 sys.path.append(rootpath)
+from nutri_coach_repo.meal_recipie_prompt_engg import *
 
-food = Image.open("food.jpg")
+food = Image.open("banner_images/food.jpg")
 st.image(food, width=700)
 
 st.title('Plan A Meal')

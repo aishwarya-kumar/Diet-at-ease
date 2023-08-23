@@ -16,7 +16,7 @@ import sys
 
 col1, mid, col2 = st.columns([1,7,20])
 with col1:
-    st.image('chatbot.jpeg', width=150)
+    st.image('banner_images/chatbot.jpeg', width=150)
 with col2:
     st.title('Say Hello to Kara - Your personal AI nutrition companion!')
 st.divider()

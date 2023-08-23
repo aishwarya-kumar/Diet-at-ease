@@ -5,7 +5,8 @@ from PIL import Image
 from streamlit_extras.switch_page_button import switch_page
 from streamlit_extras.add_vertical_space import add_vertical_space
 
-logo = Image.open('DE logo.png')
+
+logo = Image.open('banner_images/DE logo.png')
 st.image(logo, width=700)
 
 st.title('Diet @ Ease')

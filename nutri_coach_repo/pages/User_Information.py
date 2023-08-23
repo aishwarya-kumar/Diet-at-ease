@@ -13,7 +13,7 @@ st.divider()
 
 # Container for user info
 with st.container():
-    user_img = Image.open('User_image.jpg')
+    user_img = Image.open('banner_images/User_image.jpg')
     st.image(user_img, width=250)
     user_name = st.text_input('User Name')
 
