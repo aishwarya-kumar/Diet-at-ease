@@ -19,8 +19,10 @@ The repo consists of 5 main sections:
 * Kara - AI chatbot
 
 **User information:** Takes information like, height, weight, activity level, ,metabolic condition etc. This information is used to calculate the BMI(Body Mass Index), BMI interpretation and TDEE (Total Daily Energy Expenditure). This will help set a health goal(Weight gain, maintain weight, wirght loss) and identify the number of calories to be consumed in a day.
+![user-info](https://github.com/aishwarya-kumar/nutri_coach_llm/assets/52045719/9222fe95-cf48-4f4a-9bd2-17775fa3191f)
 
 **Plan a meal:** Takes input - meal of the day, cuisine of choice and ingridients in your pantry. Based on the inputs provided the LLM will provide a recipe considering your metabolic condition and food preferences. This will take into account the number of calories that needs to be consumed, based on your health goal.
+
 
 **Analyze a meal:** Takes input - Meal of the day. Description of the meal consumed and the quantity of meal consumed. The LLM analyses the meal and provide useful insights. 
 
